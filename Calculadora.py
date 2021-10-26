@@ -33,7 +33,6 @@ class Node:
     #     self.elem = null
     #     self.izq, self.der, self.papa = null
 
-Node(5)
 
 # ,3,+,2,*,4,
 
@@ -43,7 +42,6 @@ Node(5)
 
 class Tree:
  
-    pila = []
     
     def __init__(self, nodo):
         self.raiz = Node(nodo)
@@ -77,7 +75,6 @@ class ArrayStack:
         if self.is_empty:
             raise EmptyCollectionException("La pila no contiene datos")
         return self.pila[-1]
-
 
 
 
