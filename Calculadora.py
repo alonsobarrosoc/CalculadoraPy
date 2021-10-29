@@ -64,9 +64,9 @@ def evaluador_parentesis(array):
 
 def arbol_jerarquico(array):
     if evaluador_parentesis(array) == False:
-        # print("Los paréntesis no están colocados correctamente")
-        # return False
-        raise ParenthesisException("No corresponsen los parentesis")
+        print("Los paréntesis no están colocados correctamente")
+        return False
+        # raise ParenthesisException("No corresponsen los parentesis")
     pilaA = ArrayStack()
     pilaB = ArrayStack()
     for i in range(0, len(array)):
@@ -118,7 +118,9 @@ def arbol_jerarquico(array):
                         bandera = False
                 pilaA.push(dato)
 
-    return pilaB.peek()
+    if pilaB.is_empty(): return Fasle;
+    if type(pilaB.peek()).__name__ =='BinaryTree': return pilaB.peek()
+    
     
 def recorrido_postorden(raiz):
         res = []
@@ -156,7 +158,8 @@ def evalcion_postfija(arr):
 
         if arr[i] == "*":
             operandos.push(operandos.pop() * operandos.pop())
-    return operandos.peek()
+    if type(operandos.peek()).__name__ == "float": return operandos.peek()
+    else: return False
             
     
 
@@ -167,8 +170,11 @@ op = ['(', float(5),'-',float(3), ')']
 
 arbol = arbol_jerarquico(op)
 
-# if type(arbol).__name__ == "BinaryTree":
-#     print(evalcion_postfija(recorrido_postorden(arbol.raiz)))
+if type(arbol).__name__ == "BinaryTree":
+    recorrido = recorrido_postorden(arbol.raiz)
+    res = evalcion_postfija(recorrido)
+    if type(res).__name__ == 'float': print(res)
+    else: print("Revisa la sintaxis")
 
 
 
